@@ -1,0 +1,12 @@
+*Steps to Creating my Project*
+
+1. Research the exact steps to creating and training a linear regression model offline using Python, specifically with pandas and scikit learn.
+2. Create said machine learning model.
+3. Test, evaluate, and refine the model if needed.
+4. Save said machine learning model using pickle.
+5. Create a Flask backend that loads said model.
+6. Add routes to the Flask backend.
+7. Create a simple UI.
+8. Link the backend to the UI.
+9. Make the UI pretty and visually appealing.
+10. Ship project with PythonAnywhere.
