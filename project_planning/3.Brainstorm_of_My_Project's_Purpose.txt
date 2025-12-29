@@ -1,0 +1,35 @@
+I want to build a linear regression model.
+But, what will it actually predict?
+
+Areas of interest:
+-> social sciences/humanities
+-> something related to the world around me that I actually interact with, i.e. not complicated economy things
+-> coding/programming
+-> music
+-> sciences, e.g. chemistry, biology, physics
+
+Areas that are hard to predict for me because I don't understand them enough:
+-> music -- I mean I could technically predict tempo and bpm and that kind of thing but that's a bit boring and also I don't know a whole lot about music theory so it would it hard
+-> sciences -- I don't know that much about science seeing as I'm only in Year 11 and don't know about factors that could influence a scientific piece of data. It's also not something which I want to spend hours researching right now.
+
+Areas with available data on them:
+-> social science stuff
+---> education
+---> population
+---> income (too hard rn, see above)
+---> people's habits
+
+Since I am in school, maybe it would be a good idea for me to focus on education. Factors like attendance and exam scores are easy to predict because they are numerical and thus can be used in a linear regression context. My understanding of the field will also allow me to clean the data better and I will be able to spot obvious outliers and unusual features.
+
+I have found a dataset on Kaggle, which includes a students:
+- attendance
+- sleep time
+- exam difficulty
+- age
+- exam score
+
+I think that I can use some of these as inputs to predict one of these.
+Maybe I can use the former four to predict a student's exam score.
+
+I have decided my idea:
+I would like to build a linear regression machine learning model, which, taking in a student’s age, attendance, hours studied, hours slept, and exam difficulty, gives a predicted exam score.

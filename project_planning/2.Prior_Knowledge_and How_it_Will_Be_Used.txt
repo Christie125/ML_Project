@@ -1,0 +1,19 @@
+*My Prior Knowledge*
+(what I know how to do, and how I will implement this in my project)
+
+-> I have extensive knowledge of website development, and am proficient in HTML, CSS, and JS. I also recently learnt Angular, though I have forgotten a lot of this.
+This will allow me to create a visually pleasing and functioning user interface, the creation of which I find really fun!
+Also -- completely irrelevant to this project -- I used the aforementioned technologies to create a Chrome extension (Turtle Timer [it's quite simple, but published on the Chrome Web Store]).
+-> I know how to use Node and Express JS to create functioning backends. I'm not sure how helpful this will be yet, as I have not yet planned the structure of my project.
+-> I have limited knowledge of Postgres and SQL, as I used it in a past project.
+-> I used to know Python, as I created nemerous apps with Flask and could also make apps that used the terminal. However, I have forgotten a lot of this.
+This poses a small problem, as Python is one of the main languages used in ML. Perhaps I will have to remember it.
+-> I recently completed the linear regression module in Google's ML Crash Course. Through this project, I hope to build upon the skills I learnt there.
+
+How I will use these skills:
+-> I will create a website interface with HTML, CSS, and possibly JS if I want some cool animations or the like.
+-> I will use my ML skills to create a linear regression model that will predict something. I'm not sure which technology I will use -- perhaps I will have to learn something new.
+-> I will then use either Python or JS to create an API that allows users to get a prediction from their inputs.
+-> This will be combined into a seamless web app experience, allowing me to leverage both old and new skills.
+
+This was written at 8:20ish by a human, NOT AI.

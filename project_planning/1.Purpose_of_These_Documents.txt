@@ -1,0 +1,9 @@
+The purpose of the following documents is multifaceted. It, as of the 28th Decemeber 2025, is to:
+
+-> Allow me to think clearly about the goals and intentions of my project.By defining them here, I will make it easy for myself to refer back to them and thus have a greater understanding of the bigger picture, *as well as* the steps I need to take to create the final project. 
+-> Allow me to plan my project clearly. This will help me break down my problem into smaller steps and make sure that it is well-structured and logical.
+-> Give me a better understanding of my project's structure. This will help with debugging, as I will know *how* my project works.
+-> Allow me to link my prior learning to new concepts and ideas that I will learn in the creation of    this project.
+-> Allow me to connect my hypothetical ideas to what I already know (e.g. make a website interface for my project -> prior web dev skills + resources).
+
+I will update this as I go. This WAS NOT (!) written by ChatGPT -- it was written by a tired human at 8pm :)

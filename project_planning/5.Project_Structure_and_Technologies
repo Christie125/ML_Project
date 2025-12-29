@@ -1,0 +1,72 @@
+*Project Structure (Will Update as I Go)*
+
+General Flow:
+    1. User lands on browser page
+    2. HTML and CSS are rendered that explains the product
+    3. User clicks 'give it a go' button and inputs form data
+    4. User clicks predict button
+    5. Pedict button sends signal to backend
+    6. Backend sends API to model to fetch prediction for given inputs
+    7. API returns prediction
+    8. User is redirected to the prediction page with the prediction as a query parameter
+    9. Prediction is displayed
+    10. The user's input data is taken: if their sleep, attendance, or time studied is low, they are shown a message to improve this to improve this under the prediction.
+    11. Under the above, there is a list of useful resources for the student, e.g. pomodoro timer, study videos, Khan Acedemy
+    12. Under the above, there is a retry button which restarts the cycle
+
+
+Frontend details:
+
+There will be three HTML pages:
+-> the landing page
+-> the input page
+-> the results page
+
+The landing page will contain:
+-> a title
+-> a decription of what my project does
+-> a large button that takes users to the input page
+
+The landing page's styles (CSS) will be:
+-> A playful display font for the title
+-> A sans-serif main font
+-> a playful academia-inspired button style
+-> a light academia background
+-> some sticker-like elements 
+-> cursor and text animations if I have time
+
+The input page will contain:
+-> a heading -- "input sine info"
+-> a form to input aforementioned data
+-> a submit button which takes users to the prediction page
+
+The input page's styles (CSS) will be:
+-> A playful display font for the heading
+-> A sans-serif main font
+-> a playful academia-inspired button style
+-> a light academia background
+-> cursor animations if I have time
+
+The landing page will contain:
+-> a title
+-> a decription of what my project does
+-> a large button that takes users to the input page
+
+The landing page's styles (CSS) will be:
+-> A playful display font for the title
+-> A sans-serif main font
+-> a playful academia-inspired button style
+-> a light academia background
+-> some sticker-like elements 
+-> cursor and text animations if I have time
+
+AI Model Details:
+-> linear regression model
+-> inputs -> outputs
+-> will train offline
+-> will export as .pkl
+-> will be created using Python: pandas, scikit-learn, and pickle to save (see above)
+
+Backend:
+-> Flask will be the easiest to intergrate with the model and I have past experience with it so it will be a good refresher
+-> Flask will have my routes and stuff 

@@ -1,0 +1,24 @@
+I would like to build a linear regression machine learning model, which, taking in a student’s age, attendance, hours studied, hours slept, and exam difficulty, gives a predicted exam score.
+
+*Success Critera:*
+
+
+1. The AI Model - Using Google's Framework
+
+    Stating My Goal:
+    Predict a student's exam score. I will need to create a unidimensional regression model.
+    Success: The model will predict a student's score with an accuracy of 3% (e.g. if the real one was 94, 97 or 91 is the highest loss allowed).
+
+2. The UX
+
+    The user will input data about their attendance, sleep, age, and the amount of time they spent studying. They will then click a button.
+    The user will be redirected to a page where they can see their predicted score and next steps, e.g. catching up on material. They will see some helpful resources.
+    The user will have the option to try again.
+
+3. The UI
+    Academia aesthetic
+    Lots of pictures, stickers, and cute fonts
+    Inspired by Pinterest
+
+
+
