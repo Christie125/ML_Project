@@ -22,7 +22,6 @@ from sklearn.model_selection import train_test_split
 #This, as will be discussed later, will help me to normalise my data
 from sklearn.preprocessing import StandardScaler
 
-
 dataset = pd.read_csv("model/ml_data_v2.csv")
 #print(dataset)
 print(dataset.describe(include='all'))
@@ -32,7 +31,7 @@ print(dataset.corr())
 #Visualisation of correlation matrix
 corr = px.scatter_matrix(dataset, dimensions=["study_hours", "exam_score", "age", "sleep_hours", "sleep_quality", "class_attendance", "exam_difficulty", "facility_rating"], title="Scatter Matrix")
 print("Creating matrix plot...") # I hate waiting ages not knowing what my code is doing
-corr.show()
+#corr.show()
 
 #Defining the x and y of the graph
 #x is the independent variables (the features that will be used to predict the exam score) -- they will be the inputs
@@ -49,12 +48,12 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 print("Training and normalising model...")
 #Normalising the data to improve model performance
 scaler = StandardScaler()
-scaler.fit_transform(x_train)
+scaled_x_train = scaler.fit_transform(x_train)
 #Creating the model using the built-in Linear Regression model from sci-kit learn
 model = LinearRegression()
 #Make the model learn the relationship between x and y using the training data
-scaler.transform(x_test)
-model.fit(x_train, y_train)
+scaled_x_test = scaler.transform(x_test)
+model.fit(scaled_x_train, y_train)
 #Seeing what coefficients and bias the model has learned
 print("Coefficients:", model.coef_)
 print("Bias:", model.intercept_)
@@ -63,23 +62,24 @@ print("Bias:", model.intercept_)
 #Also the bias looks legit
 
 #Test with random numbers to see if it works
-test = model.predict([[5, 15, 8, 90, 2, 2, 2]])
-print(test)
+test_scaled = scaler.transform([[15, 20, 10, 100, 1, 3, 3]])
+test = model.predict(test_scaled)
+print("Test prediction for [15, 20, 10, 100, 1, 3, 3]:", test)
 #Ok yay I think it works!
 #Time to actually evaluate the model now to see if its any good at actually predicting exam scores
 
 #Evaluating the model using the testing data
-y_pred = model.predict(x_test)
+y_pred = model.predict(scaled_x_test)
+#Clipping the predicted exam scores to be between 0 and 100
+#This is because exam scores can't be negative or above 100, so this makes the predictions more realistic
+y_pred_clipped = np.clip(y_pred, 0, 100)
 #Comparing the predicted exam scores with the actual exam scores
-mae = mean_absolute_error(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred_clipped)
 print("MAE:", mae)
 
 #Visualising the results vs predictions
-plt.scatter(y_test, y_pred)
+plt.scatter(y_test, y_pred_clipped )
 plt.xlabel("Actual Exam Score")
 plt.ylabel("Predicted Exam Score")
 plt.title("Actual vs Predicted Exam Scores")
 plt.show()
-
-#The added factors changed my MAE from around 9.3 to 8.3, which is a decent improvement
-#This means that on average, my model's predictions are off by 8.3 points
