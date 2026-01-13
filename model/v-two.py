@@ -21,6 +21,10 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
 #This, as will be discussed later, will help me to normalise my data
 from sklearn.preprocessing import StandardScaler
+#This library will help me to create a pipeline, which is a way to save both my scaler and model together for easy use later
+from sklearn.pipeline import Pipeline
+#This library will help me to save my model for later use
+import pickle
 
 dataset = pd.read_csv("model/ml_data_v2.csv")
 #print(dataset)
@@ -61,11 +65,6 @@ print("Bias:", model.intercept_)
 #I can see that my model has already been trained! Using libraries makes things so much easier :)
 #Also the bias looks legit
 
-#Test with random numbers to see if it works
-test_scaled = scaler.transform([[15, 20, 10, 100, 1, 3, 3]])
-test = model.predict(test_scaled)
-print("Test prediction for [15, 20, 10, 100, 1, 3, 3]:", test)
-#Ok yay I think it works!
 #Time to actually evaluate the model now to see if its any good at actually predicting exam scores
 
 #Evaluating the model using the testing data
@@ -77,9 +76,25 @@ y_pred_clipped = np.clip(y_pred, 0, 100)
 mae = mean_absolute_error(y_test, y_pred_clipped)
 print("MAE:", mae)
 
+#Test with random numbers to see if it works
+test_scaled = scaler.transform([[15, 20, 10, 100, 1, 3, 3]])
+test = np.clip((model.predict(test_scaled)), 0, 100)
+print("Test prediction for [15, 20, 10, 100, 1, 3, 3]:", test)
+#Ok yay I think it works!
+
 #Visualising the results vs predictions
 plt.scatter(y_test, y_pred_clipped )
 plt.xlabel("Actual Exam Score")
 plt.ylabel("Predicted Exam Score")
 plt.title("Actual vs Predicted Exam Scores")
 plt.show()
+
+#Saving the model and scaler for later use
+pipeline = Pipeline([
+    ("scaler", scaler),
+    ("model", model)
+])
+
+with open("exam_score_model.pkl", "wb") as f:
+    pickle.dump(pipeline, f)
+print("Model saved as exam_score_model.pkl")
