@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.register_blueprint(score_api)
 
 @app.route("/")
-def hello():
+def index():
     return render_template("index.html")
 
 if __name__ == "__main__":

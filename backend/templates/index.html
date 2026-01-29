@@ -41,6 +41,7 @@
             <button type="submit">Predict Exam Score</button>
         </form>
 
+        <!--Where the results will later show-->
         <div id="result"></div>
 
         <!-- This collects the form data, converts it to JSON and sends it to the backend -->
@@ -67,14 +68,23 @@
 
                 // Send to Flask backend
                 try {
-                    const response = await fetch('/score', {
-                        method: 'POST',
+                    const response = await fetch('/score', { //the api endpoint, see api.py
+                        method: 'POST', //posting the data
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json' //specifying json data so I can fetch it later
                         },
-                        body: JSON.stringify(formData)
+                        body: JSON.stringify(formData) //sending the actual data as the body of the request
                     });
                     console.log('Awaiting response from backend', response);
+
+                    if (response.ok) {
+                        const data = await response.json(); // parsing the json response
+                        console.log('Response Data:', data);
+                        document.getElementById('result').innerText = `Predicted Exam Score: ${data.predicted_score.toFixed(2)}%`; //displays the result to 2 decimal places
+                    } else {
+                        console.error('Error response from server:', response.statusText);
+                        document.getElementById('result').innerText = 'Error predicting exam score. Please try again.';
+                    }
 
                 } catch (error) {
                     console.error('Error:', error);
