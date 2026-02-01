@@ -19,37 +19,32 @@
         <!-- This form collects the data from the user, which will then go into the model input -->
         <form id="prediction-form">
             <label for="age">Your age (in years):</label>
-            <br>
-            <input type="number" id="age" name="age" required aria-required="true"><br>
+            <input type="number" id="age" name="age" required aria-required="true">
 
             <label for="study_hours">How many hours have you studied for this exam?</label>
-            <br>
-            <input type="number" id="study_hours" name="study_hours" required aria-required="true"><br>
+            <input type="number" id="study_hours" name="study_hours" required aria-required="true">
 
             <label for="sleep_hours">How many hours of sleep do you get a night?</label>
-            <br>
-            <input type="number" id="sleep_hours" name="sleep_hours" required aria-required="true"><br>
+            <input type="number" id="sleep_hours" name="sleep_hours" required aria-required="true">
+
             <label for="sleep_quality">How would you rate your sleep quality (1(poor)-3(good))?</label>
-            <br>
-            <input type="number" id="sleep_quality" name="sleep_quality" required aria-required="true"><br>
+            <input type="number" id="sleep_quality" name="sleep_quality" required aria-required="true">
 
             <label for="class_attendance">Your class attendance (%):</label>
-            <br>
-            <input type="number" id="class_attendance" name="class_attendance" required aria-required="true"><br>
+            <input type="number" id="class_attendance" name="class_attendance" required aria-required="true">
 
             <label for="exam_difficulty">How difficult is the exam (1(easy)-3(hard))?</label>
-            <br>
-            <input type="number" id="exam_difficulty" name="exam_difficulty" required aria-required="true"><br>
+            <input type="number" id="exam_difficulty" name="exam_difficulty" required aria-required="true">
+
             <label for="facility_rating">How good are your school's facilities (1(poor)-3(good))?</label>
-            <br>
-            <input type="number" id="facility_rating" name="facility_rating" required><br>
+            <input type="number" id="facility_rating" name="facility_rating" required>
 
             <button type="submit">Predict Exam Score</button>
         </form>
 
         <!--Where the results will later show-->
         <div id="result"></div>
-        <a href="/" role="button">Try Again</a>
+        <a href="/" role="button" id="again-button">Try Again</a>
     </main>
 
     <!-- This collects the form data, converts it to JSON and sends it to the backend -->
