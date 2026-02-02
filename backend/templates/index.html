@@ -49,11 +49,71 @@
 
     <!-- This collects the form data, converts it to JSON and sends it to the backend -->
     <script>
+        // To maximise safety on my application, I need to check and validate user inputs on the client side, and make the user resubmit if there are any issues
+        // This includes: checking for empty fields, ensuring numerical inputs are within expected ranges, and checking string inputs for length and invalid characters
+        function validateForm() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            const hazardousChars = ['<', '>', '{', '}', '(', ')', ';', '/', '\\', '"', "'"];
+            for (let input of inputs) {
+                if (input.value === '') {
+                    alert('Please fill out all fields.');
+                    console.log('Empty field detected: ' + input.name);
+                    return false;
+                }
+                for (let char of hazardousChars) {
+                    if (input.value.includes(char)) {
+                        alert('Please avoid using hazardous characters in your input.');
+                        console.log('Hazardous character detected in ' + input.name + ': ' + char);
+                        return false;
+                    }
+                }
+                const value = parseFloat(input.value);
+                if (isNaN(value)) {
+                    alert('Please enter valid numbers.');
+                    console.log('Non-numeric input detected in ' + input.name);
+                    return false;
+                }
+                if (input.id === 'sleep_quality' || input.id === 'exam_difficulty' || input.id === 'facility_rating') {
+                    if (value < 1 || value > 3) {
+                        alert('Please enter a value between 1 and 3 for ' + input.name + '.');
+                        console.log('Out of range input detected in ' + input.name + ': ' + value);
+                        return false;
+                    }
+                }
+                if (input.id === 'class_attendance') {
+                    if (value < 0 || value > 100) {
+                        alert('Please enter a percentage between 0 and 100 for class attendance.');
+                        console.log('Out of range input detected in class_attendance: ' + value);
+                        return false;
+                    }
+                } if (input.id === 'age' || input.id === 'study_hours' || input.id === 'sleep_hours') {
+                    if (value < 0 || value > 100) {
+                        alert('Please enter correct information for ' + input.name + '.');
+                        console.log('Out of range input detected in ' + input.name + ': ' + value);
+                        return false;
+                    }
+                } if (value > 1000) {
+                    alert('Please enter a reasonable number for ' + input.name + '.');
+                    console.log('Unreasonably high input detected in ' + input.name + ': ' + value);
+                    return false;
+                }
+                else {
+                    continue;
+                }
+            }
+            return true;
+        }
+
         // This listens for the form submission, ready to act when the user clicks submit
         document.getElementById('prediction-form').addEventListener('submit', async function (form) {
+            // First, validate the form inputs
             // This prevent the default form submission behavior, which stops the page from reloading
             form.preventDefault();
-
+            validateForm();
+            //if validation returns false, stop the function here
+            if (!validateForm()) {
+                return;
+            }
             // This actually collects the form data and makes it into a JSON array
             // ParseFloat is used to convert string inputs to numbers, which the model requires
             const formData = {
@@ -67,7 +127,8 @@
             };
 
             //checking that this works in the console
-            console.log('JSON Data:', JSON.stringify(formData));
+            //console.log('JSON Data:', JSON.stringify(formData));
+            //Must be removed in production for security reasons
 
             // Send to Flask backend
             try {
@@ -78,22 +139,26 @@
                     },
                     body: JSON.stringify(formData) //sending the actual data as the body of the request
                 });
-                console.log('Awaiting response from backend', response);
+                //console.log('Awaiting response from backend', response);
+                //Must be removed in production for security reasons
 
                 if (response.ok) {
                     const data = await response.json(); // parsing the json response
-                    console.log('Response Data:', data);
+                    //console.log('Response Data:', data);
+                    //Must be removed in production for security reasons
                     document.getElementById('prediction-form').style.display = 'none';
                     document.getElementById('again-button').style.visibility = 'visible';
                     document.getElementById('result').style.visibility = 'visible';
                     document.getElementById('result').innerText = `Predicted Exam Score: ${data.predicted_score.toFixed(2)}%`; //displays the result to 2 decimal places
                 } else {
-                    console.error('Error response from server:', response.statusText);
+                    console.error('Error response from server');
+                    //Can't add more details for security reasons
                     document.getElementById('result').innerText = 'Error predicting exam score. Please try again.';
                 }
 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error during fetch operation');
+                //Can't add more details for security reasons
             }
         });
     </script>

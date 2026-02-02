@@ -17,8 +17,8 @@ model_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'exam_score_
 #RB means read binary, which is necessary for loading pickle files as they are stored in binary
 #with means that the file will be properly closed the code block is finished, which is good for resource management
 #the model_file just makes the code a bit more readable and allows me to use it in the next line again nicely
-print(f"Model path: {model_path}")
-print(f"Model file exists: {os.path.exists(model_path)}")
+#print(f"Model path: {model_path}")
+#print(f"Model file exists: {os.path.exists(model_path)}")
 try:
     with open(model_path, 'rb') as model_file:
         model = pickle.load(model_file)
@@ -26,7 +26,9 @@ except FileNotFoundError:
     print(f"ERROR: Model file not found at {model_path}")
     model = None
 except Exception as e:
-    print(f"ERROR loading model: {e}")
+    print(f"ERROR loading model")
+    #print(f"Exception: {e}")
+    #Can't print exception details for security reasons
     model = None
 
 #This defines a route for the score API that listens for POST requests at the /score endpoint
