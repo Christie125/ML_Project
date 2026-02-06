@@ -44,6 +44,18 @@
 
         <!--Where the results will later show-->
         <div id="result"></div>
+        <div id="tips">
+            <h3>Tips for improving your exam score:</h3>
+            <ul>
+                <li>Study regularly and avoid cramming before the exam.</li>
+                <li>Get enough sleep, especially in the days leading up to the exam.</li>
+                <li>Attend all your classes and actively participate.</li>
+                <li>Seek help from teachers or tutors if you're struggling with the material.</li>
+                <li>Practice past exam papers to familiarise yourself with the format and types of questions.</li>
+                <li>Maintain a healthy lifestyle, including a balanced diet and regular exercise, to improve focus and
+                    reduce stress.</li>
+            </ul>
+        </div>
         <a href="/" role="button" id="again-button">Try Again</a>
     </main>
 
@@ -148,6 +160,7 @@
                     //Must be removed in production for security reasons
                     document.getElementById('prediction-form').style.display = 'none';
                     document.getElementById('again-button').style.visibility = 'visible';
+                    document.getElementById('tips').style.visibility = 'visible';
                     document.getElementById('result').style.visibility = 'visible';
                     document.getElementById('result').innerText = `Predicted Exam Score: ${data.predicted_score.toFixed(2)}%`; //displays the result to 2 decimal places
                 } else {

@@ -137,6 +137,26 @@ a:active {
     max-width: 100%;
 }
 
+#tips {
+    font-size: 1.2rem;
+    justify-content: center;
+    color: var(--dark-brown);
+    background-color: var(--cream);
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: auto;
+}
+
+#tips ul li {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+#tips h3 {
+    text-align: center;
+}
+
 header {
     margin-bottom: 1rem;
 }
@@ -148,6 +168,7 @@ main {
 }
 
 #again-button,
+#tips,
 #result {
     visibility: hidden;
 }
@@ -188,6 +209,11 @@ main {
         font-size: 3rem;
         padding-top: 2rem;
         padding-bottom: 2rem;
+        max-width: 70%;
+    }
+
+    #tips {
+        font-size: 1.5rem;
         max-width: 70%;
     }
 }
