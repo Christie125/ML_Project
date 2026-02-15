@@ -31,16 +31,55 @@ except Exception as e:
     #Can't print exception details for security reasons
     model = None
 
+required_things = {
+    "study_hours": (0, 24),
+    "age": (5, 100),
+    "sleep_hours": (0, 24),
+    "class_attendance": (0, 100),
+    "exam_difficulty": (1, 10),
+    "sleep_quality": (1, 10),
+    "facility_rating": (1, 10),
+}
+
+def validate_payload(data):
+    if data is None:
+        return "Invalid or missing JSON body."
+    missing = [thing for thing in required_things if thing not in data]
+    if missing:
+        return f"Missing fields: {', '.join(missing)}"
+    for key, (min_v, max_v) in required_things.items():
+        try:
+            val = float(data[key])
+        except (TypeError, ValueError):
+            return f"Field '{key}' must be a number."
+        if not (min_v <= val <= max_v):
+            return f"Field '{key}' must be between {min_v} and {max_v}."
+    return None
+
 #This defines a route for the score API that listens for POST requests at the /score endpoint
 @score_api.route("/score", methods=['GET', 'POST']) #specifies that this route only accepts POST requests and not GET requests
 def predict(): #What will happen when a request is made to this endpoint
     try:
         if model is None:
-            return jsonify({'error': 'Model failed to load. Please run v-two.py first to generate exam_score_model.pkl'}), 400
+            return jsonify({'error': 'Model failed to load.'}), 400
+        if request.method != 'POST':
+            return jsonify({'error': 'Invalid request method. Only POST is allowed.'}), 405
             
-        data = request.json #gets the data from what the frontend sent
+        data = request.get_json(silent=True)
+        err = validate_payload(data)
+        if err:
+            return jsonify({'error': err}), 400
+         #gets the data from what the frontend sent
         # Extracts features from request in the correct order matching training script (v-two.py)
-        features = np.array([[data['study_hours'], data['age'], data['sleep_hours'], data['class_attendance'], data['exam_difficulty'], data['sleep_quality'], data['facility_rating']]])
+        features = np.array([[
+            float(data['study_hours']), 
+            float(data['age']), 
+            float(data['sleep_hours']), 
+            float(data['class_attendance']), 
+            float(data['exam_difficulty']), 
+            float(data['sleep_quality']), 
+            float(data['facility_rating'])
+            ]])
         
         # Makes prediction using the pipeline (which includes both scaler and model, so I don't have to do scaling here)
         prediction = model.predict(features)
@@ -52,4 +91,4 @@ def predict(): #What will happen when a request is made to this endpoint
             'predicted_score': float(prediction_clipped[0])
         })
     except Exception as e:
-        return jsonify({'error': str(e)}), 400
+        return jsonify({'error': 'Prediction failed'}), 400
