@@ -7,7 +7,7 @@ Then, I created a simple Flask and JS backend, which was a lot simpler than I th
 Then came the fun part -- the UI! I wanted to make it as user-friendly and visually appealing as possible, so I used my creativity and design skills to create a simple yet effective interface with a light academia theme, which I think suits the project well. I used HTML and CSS to create the layout and styling.
 I also made sure to test the UI on different devices and browsers to ensure it was responsive and accessible to all users, and I went through the w3schools accessibility checklist to make sure I had done everything I could to make it accessible.
 I also went through the OWASP security checklist to make sure I had done everything I could to make it secure, and I implemented measures such as input validation  prevent common security vulnerabilities.I don't want my website to break!
-Lastly, I added a section with tips to help users actually use the insights that they gained from the AI.
+Lastly, I added a section with tips to help users actually use the insights that they gained from the AI and deployed my app using PythonAnywhere.
 
 I learnt and revised lots of things while creating this project, including but not limited to:
 -> How to create and refine a linear regression model using SciKit-Learn
@@ -17,6 +17,7 @@ I learnt and revised lots of things while creating this project, including but n
 -> How to create a simple yet effective UI using HTML and CSS
 -> How to make a website responsive and accessible
 -> How to make a website secure
+-> How to deploy an app using PythonAnywhere
 
 The project is not perfect, and there are many ways I could improve it, such as by using a more complex model to lower the MSE, finding better data, and adding more features. 
 

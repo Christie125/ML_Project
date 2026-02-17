@@ -1,0 +1,30 @@
+Wow... what an insane journey that was.
+Hackatime says I spent ~10 hours on this, but it was honestly more -- the time I spent researching, finding data, cleaning data, and learning how to use the tools I needed to use is not reflected in that number. I also spent a lot of time trying to figure out how to do things, and I had to learn a lot of new skills along the way.
+
+I created a linear regression model that predicts a student's exam score based on their age, attendance, hours studied, hours slept, and exam difficulty. 
+I used Kaggle to find a dataset that was not too complicated and that I could understand. Next, I cleaned the data by loading it into a Google Sheet and just manually checking each piece with CTRL+F.
+Now, I know that there are more efficient ways to clean data, but at the time I was still new to working with data in Python, and I wanted to just get it done. Luckily, since it was synthetic, there was not much to change!
+Next, I researched how to create a linear regression model in Python. Previously, I had taken Google's Machine Learning Crash Course, so I had some familiarity with the concepts, but I had never actually created a model from scratch; I hoped that the latter steps would help me to solidify my understanding.
+I was able to find some tutorials online, mainly on Youtube, that walked me through the process of creating a linear regression model using scikit-learn. Along with Google's interactive exercises, these resources were really helpful and gave me a good understanding.
+I implemented the model in Python, and after some trial and error, I was able to get it working. I then evaluated the model's performance using mean absolute error, and saved the model with Pickle when I was happy with the results.
+I then created a Flask backend that loads the model and serves predictions through an API. This was not too difficult, as I had some experience with Flask from a previous project. I just had to figure out how to load the model and use it to make predictions based on user input. My JavaScript knowledge also came in handy, as I used it to create the frontend that interacts with the Flask backend.
+Finally, I created a simple UI that allows users to input their data and see their predicted score, as well as tips on how to improve their score.
+Then, using a Youtube tutorial, I was able to deploy my app for free on PythonAnywhere. I really liked this, as it only took half an hour (compared to previous project deployments taking weeks!) and it was really easy to do. 
+Overall, this project was a great learning experience for me. I learned a lot about data cleaning, linear regression, Flask, and deployment. I also had a lot of fun creating the app and seeing it come to life. I'm really proud of what I accomplished, and I'm excited to continue learning and building more projects in the future!
+Its currently live at christie.pythonanywhere.com, so feel free to check it out!
+
+I learnt and revised lots of things while creating this project, including but not limited to:
+-> How to create and refine a linear regression model using SciKit-Learn
+-> How to find and clean data for machine learning projects
+-> How to save a model using Pickle and load it in a backend
+-> How to create a simple Flask and JS backend
+-> How to create a simple yet effective UI using HTML and CSS
+-> How to make a website responsive and accessible
+-> How to make a website secure
+-> How to deploy an app using PythonAnywhere
+
+The project is not perfect, and there are many ways I could improve it, such as by using a more complex model to lower the MSE, finding better data, and adding more features. I think that the small amount of data made the model less accurate than it could have been, and I also think that there are some features that I could have added that would have made the model more accurate, such as the student's previous exam scores or their average grade. 
+
+This project had a big learning curve, due to the fact that it was my first machine learning project. 
+However, I learnt to use available resources, both online and otherwise, to efficiently and effectively to find answers to my questions and learn how to do new things. 
+Some of the most prominent challenges included not knowing how to use new technologies and getting my model to be more accurate.
